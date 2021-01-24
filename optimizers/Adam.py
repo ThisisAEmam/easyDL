@@ -48,12 +48,12 @@ class Adam(_Optimizer):
         v_dw_corr = self.v_dw[self.counter] / (1. - self.beta2 ** self.t)
         v_db_corr = self.v_db[self.counter] / (1. - self.beta2 ** self.t)
         
-        # self.lr_updated[self.counter] = self.lr * np.sqrt(1-self.beta2**self.t)/(1-self.beta1**self.t)
+        self.lr_updated[self.counter] = self.lr * np.sqrt(1-self.beta2**self.t)/(1-self.beta1**self.t)
         self.t +=1
-        # lr = self.lr_updated[self.counter]
+        lr = self.lr_updated[self.counter]
         ## update weights and biases
-        w = w - self.lr*(m_dw_corr/(np.sqrt(v_dw_corr)+self.epsilon))
-        b = b - self.lr*(m_db_corr/(np.sqrt(v_db_corr)+self.epsilon))
+        w = w - lr*(m_dw_corr/(np.sqrt(v_dw_corr)+self.epsilon))
+        b = b - lr*(m_db_corr/(np.sqrt(v_db_corr)+self.epsilon))
         
         self.counter = (self.counter + 1) % self.num_layers
 

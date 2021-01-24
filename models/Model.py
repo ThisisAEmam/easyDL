@@ -119,6 +119,11 @@ class Model:
                     X = np.transpose(X)
                 loss, acc, val_loss, val_acc = self._run_epoch(X, Y, self.optimizer)
             
+            self.losses.append(loss)
+            self.losses_val.append(val_loss)
+            self.acc.append(acc)
+            self.acc_val.append(val_acc)
+            
             if verbose:
                 if epoch % 1 == 0:
                     print('\nLoss: {:.4f} \t Accuracy: {:.3f}'.format(loss, acc))
@@ -148,8 +153,7 @@ class Model:
         
         gradient = bce.backward()
          
-        self.losses.append(loss)
-        self.acc.append(acc)
+
         
         # Backpropagation
         for i, _ in reversed(list(enumerate(self.layers))):
