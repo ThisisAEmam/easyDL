@@ -3,6 +3,9 @@ from easyDL.losses import BinaryCrossEntropy, MeanSquaredError, CategoricalCross
 from tqdm import tqdm
 from time import sleep
 import pickle
+import easyDL
+from .load_model import load_model
+from os import remove
     
 class Model:
     def __init__(self, layers = []):
@@ -78,7 +81,7 @@ class Model:
         self.loss_fn = loss
         self.optimizer = optimizer
     
-    def train(self, X_train, Y_train, epochs, batch_size= 32, validation_data= None, verbose= False):
+    def train(self, X_train, Y_train, epochs, batch_size= 32, validation_data= None, verbose= False, restore_best_weights= False):
         self.batch_size = batch_size
         self.validation_data = validation_data
         
@@ -106,6 +109,9 @@ class Model:
                 layer(self.layers[i-1].output_dim)
         
         self.optimizer.set_num_layers(num_optimized_layers)
+        
+        self.best_val_acc = 0
+        cached_model_path = easyDL.__file__.split('__init__')[0] + 'models/cached_model.pkl'
             
         for epoch in range(epochs):
             if verbose:
@@ -124,11 +130,20 @@ class Model:
             self.acc.append(acc)
             self.acc_val.append(val_acc)
             
+            if restore_best_weights:
+                if val_acc > self.best_val_acc:
+                    self.best_val_acc = val_acc
+                    self.save(cached_model_path)
+            
             if verbose:
                 if epoch % 1 == 0:
                     print('\nLoss: {:.4f} \t Accuracy: {:.3f}'.format(loss, acc))
                     print('Val_Loss: {:.4f} \t Val_Accuracy: {:.3f}\n'.format(val_loss, val_acc))
-    
+        
+        if restore_best_weights:
+            self = load_model(cached_model_path)
+            remove(cached_model_path)
+            
     def _run_epoch(self, X, Y, opt):
         
         forward, X = self._forward_pass(X)
@@ -173,8 +188,5 @@ class Model:
             acc_val = np.mean(preds == Y_val)
             bce_val = self._compute_loss(forward_val, Y_val)
             loss_val = bce_val.forward()
-            
-            self.acc_val.append(acc_val)
-            self.losses_val.append(loss_val)
         
         return loss, acc, loss_val, acc_val

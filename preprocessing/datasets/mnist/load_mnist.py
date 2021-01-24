@@ -1,6 +1,3 @@
-"""
-This function loads mnist dataset.
-"""
 import numpy as np
 import os
 import shutil
