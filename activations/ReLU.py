@@ -14,11 +14,8 @@ class ReLU(_Activation):
     def __init__(self):
         self.type = 'ReLU'
     
-    def forward(self, input_val):
-        # print(input_val)
-        
+    def forward(self, input_val):       
         self._z = np.maximum(0, input_val)
-        # print(self._z)
         return self._z
      
     def backward(self, dJ):

@@ -141,7 +141,9 @@ class Model:
                     print('Val_Loss: {:.4f} \t Val_Accuracy: {:.3f}\n'.format(val_loss, val_acc))
         
         if restore_best_weights:
+            print(self)
             self = load_model(cached_model_path)
+            print(self)
             remove(cached_model_path)
             
     def _run_epoch(self, X, Y, opt):
