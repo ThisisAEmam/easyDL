@@ -30,7 +30,7 @@ class Model:
         z = x - np.mean(x)
         z = z / np.std(x) 
         return z
-    
+    # HEllO WORLD
     def _forward_pass(self, X):
         # Forward pass
         for i in range(len(self.layers)):
