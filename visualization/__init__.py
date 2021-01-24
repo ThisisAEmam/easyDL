@@ -1,4 +1,5 @@
-from .plot_losses import plot_losses
+from .plots import plot_losses, plot_accurcy
+
 
 # import matplotlib
 # import numpy as np

@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jan 24 16:50:32 2021
 
-@author: moham
-"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,5 +11,18 @@ def plot_losses(model):
     ymin, ymax = plt.ylim()
     plt.axis([0, len(model.losses),ymin, ymax])
     
+    
+    
+
+def plot_accurcy(model):
+    plt.figure(figsize=(10, 8))
+    plt.xticks(np.arange(1, len(model.acc)+1, 1))
+    plt.plot(model.acc)
+    xmin, xmax = plt.xlim()
+    ymin, ymax = plt.ylim()
+    plt.axis([0, len(model.acc),ymin, ymax])
+    
+    
+
     
     
