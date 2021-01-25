@@ -1,8 +1,0 @@
-README.md
-setup.py
-easyDL/__init__.py
-easyDL/py_easyDL.egg-info/PKG-INFO
-easyDL/py_easyDL.egg-info/SOURCES.txt
-easyDL/py_easyDL.egg-info/dependency_links.txt
-easyDL/py_easyDL.egg-info/requires.txt
-easyDL/py_easyDL.egg-info/top_level.txt
