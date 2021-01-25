@@ -1,4 +1,3 @@
-
 import tarfile
 import _pickle as cPickle
 import os
@@ -8,8 +7,6 @@ from tqdm import tqdm
 import numpy as np
 import easyDL
 
-with open('/media/Work/4th CSE/Neural Networks/Project/cifar-100-python/test', 'rb') as f:
-        test = cPickle.load(f, encoding='latin1')
 
 def load_data(labels_type= 'fine'):
     path = easyDL.__file__.split('__init__')[0] + 'preprocessing/datasets/__datasets__/cifar-100/'

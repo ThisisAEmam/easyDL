@@ -5,7 +5,7 @@ EasyDL - Where Deep learning is meant to be easy.
 ## Installation
 Run the following to install:
 ```python
-pip install ezDL
+pip install py-easyDL
 ```
 ## Usage
 EasyDL uses the same methodology as Google's Tensorflow v2.x. 
