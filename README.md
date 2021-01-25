@@ -30,8 +30,11 @@ This is an example using our package.
 ```python
 # Preprocessing
 (X_train, Y_train), (X_test, Y_test) = mnist.load_data()
-X_train = normalize(X_train)
-X_test = normalize(X_test)
+X_train = normalize(X_train[:4000])
+Y_train = Y_train[:4000]
+
+X_test = normalize(X_test[:1000])
+Y_test = Y_test[:1000]
 
 # Create a model
 model = Model()
