@@ -126,9 +126,11 @@ class Model:
                 loss, acc, val_loss, val_acc = self._run_epoch(X, Y, self.optimizer)
             
             self.losses.append(loss)
-            self.losses_val.append(val_loss)
             self.acc.append(acc)
-            self.acc_val.append(val_acc)
+            
+            if len(validation_data) != 0:
+                self.losses_val.append(val_loss)
+                self.acc_val.append(val_acc)
             
             if restore_best_weights:
                 if val_acc > self.best_val_acc:

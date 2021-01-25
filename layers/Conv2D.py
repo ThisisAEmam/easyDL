@@ -61,7 +61,6 @@ class Conv2D(Layer):
                     self._weights[np.newaxis, :, :, :],
                     axis=(1, 2, 3)
                 )
-                
 
         return output + self._biases
     
