@@ -1,8 +1,8 @@
 import numpy as np
-from easyDL import Layer
 
-class SparseCategoricalCrossEntropy(Layer):
-    def __init__(self, pred, real):
+class SparseCategoricalCrossEntropy:
+    def __init__(self, pred= None, real= None):
+        super().__init__()
         self.type = 'Sparse Categorical Cross-Entropy'   
         self.predicted = np.transpose(pred)
         self.real = real

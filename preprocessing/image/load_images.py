@@ -60,7 +60,7 @@ def load_images_from_classes_directory(parent_dir_path, target_size, shuffle= Tr
     for i in range(1, len(classes_dir)):
         images = load_images_from_directory(parent_dir_path + classes_dir[i], target_size)
         num_images = len(images)
-        y_i = np.array([i]*num_images)           
+        y_i = np.array([i]*num_images)
         X = np.concatenate((X, images), axis= 0)
         Y = np.concatenate((Y, y_i), axis= 0)
     

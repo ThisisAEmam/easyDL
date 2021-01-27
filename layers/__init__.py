@@ -1,6 +1,6 @@
-from .Dense import Dense
-from .MaxPooling2D import MaxPooling2D
-from .Conv2D import Conv2D
-from .Flatten import Flatten
-from .Dropout import Dropout
-from.BatchNorm import BatchNorm
+from .dense import Dense
+from .max_pooling_2d import MaxPooling2D
+from .conv_2d import Conv2D
+from .flatten import Flatten
+from .dropout import Dropout
+from .batch_norm import BatchNorm

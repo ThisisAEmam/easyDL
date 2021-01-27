@@ -1,8 +1,8 @@
 import numpy as np
-from easyDL import Layer
 
-class MeanSquaredError(Layer):
-    def __init__(self, pred, real):
+class MeanSquaredError:
+    def __init__(self, pred= None, real= None):
+        super().__init__()
         self.type = 'Mean Squared Error'  
         self.predicted = pred
         self.real = real

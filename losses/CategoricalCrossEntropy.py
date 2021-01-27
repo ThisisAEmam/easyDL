@@ -1,8 +1,8 @@
 import numpy as np
-from easyDL import Layer
 
-class CategoricalCrossEntropy(Layer):
-    def __init__(self, pred, real, num_classes):
+class CategoricalCrossEntropy:
+    def __init__(self, pred= None, real= None, num_classes= None):
+        super().__init__()
         self.type = 'Categorical Cross-Entropy'
         self.predicted = np.transpose(pred)
         self.real = real
@@ -16,9 +16,6 @@ class CategoricalCrossEntropy(Layer):
         return ind
      
     def forward(self):
-        # if np.any(self.predicted == 0):
-        #     print("Error zero")
-        # print(self.predicted)
         return -np.mean(self.one_hot_encoding(self.real, self.num_classes) * np.log(self.predicted+1e-8))
      
     def backward(self):
