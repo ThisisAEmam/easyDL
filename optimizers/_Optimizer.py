@@ -18,5 +18,5 @@ class _Optimizer:
         self.lr_updated = [0]*num_layers
         self.counter = 0
         
-    def update(self):
+    def update(self, w, b, dw, db):
         pass

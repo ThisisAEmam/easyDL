@@ -64,7 +64,6 @@ class Model:
         self.optimizer = None
         self.batch_size = None
         self.validation_data = None
-        self.num_classes = None
         self.best_val_acc = None
         self.is_loss_legend_shown = False
         self.is_accuracy_legend_shown = False
@@ -152,7 +151,7 @@ class Model:
         if self.loss_fn_name == 'binary_crossentropy':
             bce = BinaryCrossEntropy(forward, targets)
         elif self.loss_fn_name == 'categorical_crossentropy':
-            bce = CategoricalCrossEntropy(forward, targets, self.num_classes)
+            bce = CategoricalCrossEntropy(forward, targets)
         elif self.loss_fn_name == 'mse':
             bce = MeanSquaredError(forward, targets)
         elif self.loss_fn_name == 'sparse_categorical_crossentropy':
@@ -278,9 +277,6 @@ class Model:
         """
         self.batch_size = batch_size
         self.validation_data = validation_data
-
-        if self.loss_fn_name == 'categorical_crossentropy':
-            self.num_classes = len(set(y_train))
 
         num_batches = x_train.shape[0] // self.batch_size
 
